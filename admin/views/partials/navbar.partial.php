@@ -18,13 +18,26 @@ $menuItems = [
     'roles' => [1, 2]
   ],
   [
-    'title' => 'Votantes',
-    'path'  => 'votantes',
-    'icon'  => 'sliders',
-    'link'  => 'dashboard.php',
-    'roles' => [1, 2]
+    'title'     => 'Votantes',
+    'path'      => 'persons',
+    'icon'      => 'users',
+    'collapsed' => true,
+    'roles'     => [1, 2],
+    'items'     => [
+      [
+        'title' => 'Nuevo Votante',
+        'path'  => 'persons-new',
+        'link'  => 'persons/new.php',
+        'roles' => [1, 2]
+      ],
+      [
+        'title' => 'Lista de Votantes',
+        'path'  => 'persons-list',
+        'link'  => 'persons/list.php',
+        'roles' => [1, 2]
+      ],
+    ]
   ],
-
   [
     'title'     => 'Candidatos',
     'path'      => 'candidates',

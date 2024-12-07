@@ -121,10 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 /* ========== Theme config ========= */
 $theme_title = "Editar usuario";
-$theme_path  = "user-add";
-// $theme_scripts = ["js/clear.js"];
-// $theme_styles = ["pages/dashboard.css"];
-include BASE_DIR_ADMIN . "/views/users/edit.view.php";
+$theme_path  = "persons-add";
+include BASE_DIR_ADMIN . "/views/persons/edit.view.php";
 /* ================================= */
 
 

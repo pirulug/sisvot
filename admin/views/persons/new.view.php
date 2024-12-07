@@ -6,53 +6,25 @@
 <div class="card mb-3">
   <div class="card-body">
     <form id="formNewUser" enctype="multipart/form-data" action="" method="post">
-
       <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input type="text" name="user_name" class="form-control"
-          value="<?= isset($_POST['user_name']) ? htmlspecialchars($_POST['user_name']) : '' ?>" required>
+        <label for="dni" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="dni" name="dni" pattern="[0-9]{8}"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8);"
+          title="Debe ingresar exactamente 8 dígitos numéricos." required>
       </div>
-
       <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="text" name="user_email" class="form-control"
-          value="<?= isset($_POST['user_email']) ? htmlspecialchars($_POST['user_email']) : '' ?>" required>
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" required>
       </div>
-
       <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input class="form-control" type="text" name="user_password"
-          value="<?= isset($_POST['user_password']) ? htmlspecialchars($_POST['user_password']) : '' ?>">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" required>
       </div>
-
       <div class="mb-3">
-        <label class="form-label">Role</label>
-        <select class="form-select" name="user_role" required>
-          <option value="">- Seleccionar -</option>
-          <option value="2" <?= isset($_POST['user_role']) && $_POST['user_role'] == 2 ? 'selected' : '' ?>>
-            Administrador
-          </option>
-          <option value="3" <?= isset($_POST['user_role']) && $_POST['user_role'] == 3 ? 'selected' : '' ?> selected>
-            Usuario
-          </option>
-        </select>
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password" required>
       </div>
-
-      <div class="mb-3">
-        <label class="form-label">Status</label>
-        <select class="form-select" name="user_status" required>
-          <option value="0">- Seleccionar -</option>
-          <option value="1" <?= isset($_POST['user_status']) && $_POST['user_status'] == 1 ? 'selected' : '' ?> selected>
-            Activo
-          </option>
-          <option value="2" <?= isset($_POST['user_status']) && $_POST['user_status'] == 2 ? 'selected' : '' ?>>
-            Inactivo
-          </option>
-        </select>
-      </div>
-
-      <hr>
-      <button class="btn btn-primary" type="submit" name="save">Guardar</button>
+      <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
   </div>
 </div>

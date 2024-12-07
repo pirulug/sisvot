@@ -40,8 +40,6 @@ $users = getPaginatedResults('users', $searchColumns, $search, $additionalCondit
 
 /* ========== Theme config ========= */
 $theme_title = "Lista de usuarios";
-$theme_path  = "user-list";
-// $theme_scripts = ["pages/dashboard.js"];
-// $theme_styles = ["pages/dashboard.css"];
-include BASE_DIR_ADMIN . "/views/users/list.view.php";
+$theme_path  = "persons-list";
+include BASE_DIR_ADMIN . "/views/persons/list.view.php";
 /* ================================= */
