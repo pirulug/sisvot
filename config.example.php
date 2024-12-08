@@ -40,3 +40,5 @@ const ENCRYPT_IV = '456232132132432234132';
 
 // Configuración de la zona horaria
 date_default_timezone_set("America/Lima");
+
+const RESULTS_VISIBLE_AT = '2024-12-07 22:40:00';

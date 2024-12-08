@@ -13,7 +13,7 @@ $orderColumn    = 'person_id';
 $orderDirection = 'DESC';
 
 // Condiciones adicionales dinámicas
-$searchColumns = ['person_name', 'person_email'];
+$searchColumns = ['person_dni', 'person_name', 'person_email'];
 
 $additionalConditions = [];
 

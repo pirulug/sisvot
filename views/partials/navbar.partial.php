@@ -1,68 +1,3 @@
-<?php
-
-$role = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null;
-
-if (isset($_SESSION["user_name"])) {
-  $check_access = check_access($connect);
-
-  $menuItems = [
-    ['title' => 'Candidatos', 'link' => SITE_URL . '/candidates.php', 'roles' => []],
-    ['title' => 'Votar', 'link' => SITE_URL . '/vote.php', 'roles' => []],
-    [
-      'title' => 'Dashboard',
-      'link'  => SITE_URL . "/admin/controllers/dashboard.php",
-      'roles' => [1, 2]
-    ],
-    [
-      'title' => 'Admin',
-      'link'  => SITE_URL . "/admin",
-      'roles' => [1, 2, 3]
-    ],
-    // [
-    //   'title'    => $user_session->user_name,
-    //   'link'     => '#',
-    //   'dropdown' => true,
-    //   'roles'    => [1, 2, 3],
-    //   'items'    => [
-    //     [
-    //       'title' => 'Perfil',
-    //       'link'  => 'profile.php',
-    //       'roles' => [1, 2, 3]
-    //     ],
-    //     [
-    //       'title' => 'Favoritos',
-    //       'link'  => 'favorites.php',
-    //       'roles' => [1, 2]
-    //     ],
-    //     ['divider' => true],
-    //     [
-    //       'title' => 'Salir',
-    //       'link'  => 'signout.php',
-    //       'roles' => [1, 2, 3]
-    //     ],
-    //   ]
-    // ]
-  ];
-} else {
-  $menuItems = [
-    ['title' => 'Admin', 'link' => SITE_URL . '/admin', 'roles' => []],
-    ['title' => 'Candidatos', 'link' => SITE_URL . '/candidates.php', 'roles' => []],
-    ['title' => 'Votar', 'link' => SITE_URL . '/vote.php', 'roles' => []],
-    [
-      'title'    => 'Auth',
-      'link'     => '#',
-      'dropdown' => true,
-      'roles'    => [],
-      'items'    => [
-        ['title' => 'Login', 'link' => 'signin.php', 'roles' => []],
-        ['title' => 'Register', 'link' => 'signup.php', 'roles' => []],
-      ]
-    ]
-  ];
-}
-
-?>
-
 <nav class="navbar navbar-expand-lg bg-body">
   <div class="container">
     <a class="navbar-brand" href="<?= SITE_URL ?>">
@@ -87,40 +22,18 @@ if (isset($_SESSION["user_name"])) {
           <li class="nav-item">
             <a class="nav-link" href="/">Inicio</a>
           </li>
-          <?php foreach ($menuItems as $item): ?>
-            <?php
-            if (!isset($item['roles']) || empty($item['roles']) || $accessControl->hasAccess($item['roles'], $role)):
-              ?>
-              <?php if (isset($item['dropdown']) && $item['dropdown']): ?>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="<?= $item['link'] ?>" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <?= $item['title'] ?>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <?php foreach ($item['items'] as $subItem): ?>
-                      <?php
-                      if (isset($subItem['divider']) && $subItem['divider']): ?>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                      <?php elseif (!isset($subItem['roles']) || empty($subItem['roles']) || $accessControl->hasAccess($subItem['roles'], $role)): ?>
-                        <li>
-                          <a class="dropdown-item" href="<?= $subItem['link'] ?>"><?= $subItem['title'] ?></a>
-                        </li>
-                      <?php endif; ?>
-                    <?php endforeach; ?>
-                  </ul>
-                </li>
-              <?php else: ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= $item['link'] ?>"><?= $item['title'] ?></a>
-                </li>
-              <?php endif; ?>
-            <?php endif; ?>
-          <?php endforeach; ?>
-
-          <?php if (isset($_SESSION["user_name"])): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="candidates.php">Candidatos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="vote.php">Votar</a>
+          </li>
+          
+          
+          <?php if (isset($_SESSION["person_id"])): ?>
+            <li class="nav-item">
+              <a class="nav-link" href="result.php">Resultados</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle d-inline-block d-lg-none" href="#" data-bs-toggle="dropdown">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -132,16 +45,12 @@ if (isset($_SESSION["user_name"])) {
               </a>
               <a class="nav-link dropdown-toggle d-none d-lg-inline-flex align-items-center" href="#" role="button"
                 data-bs-toggle="dropdown">
-                <img class="rounded me-1" src="<?= getGravatar($user_session->user_email, 40) ?>"
-                  alt="<?= $user_session->user_name ?>">
+                <img class="rounded me-1" src="<?= getGravatar($person_session->person_email, 40) ?>"
+                  alt="<?= $person_session->person_name ?>">
                 <div class="text-center">
                   <b>
-                    <?= ucfirst($user_session->user_name) ?>
+                    <?= ucfirst($person_session->person_name) ?>
                   </b>
-                  <br>
-                  <i>
-                    @<?= strtolower($user_session->user_name) ?>
-                  </i>
                 </div>
               </a>
               <ul class="dropdown-menu">
@@ -149,13 +58,10 @@ if (isset($_SESSION["user_name"])) {
                   <a class="dropdown-item" href="profile.php">Perfil</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="favorites.php">Favorito</a>
-                </li>
-                <li>
                   <hr class="dropdown-divider">
                 </li>
                 <li>
-                  <a class="dropdown-item" href="signout.php">Salir</a>
+                  <a class="dropdown-item" href="logout.php">Salir</a>
                 </li>
               </ul>
             </li>

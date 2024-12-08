@@ -65,29 +65,29 @@ CREATE TABLE `users` (
 
 -- Vote
 CREATE TABLE candidates (
-    candidate_id INT AUTO_INCREMENT PRIMARY KEY,
-    candidate_name VARCHAR(255) NOT NULL,
-    candidate_description TEXT,
-    candidate_image VARCHAR(255) NOT NULL, 
-    candidate_pdf VARCHAR(255) NOT NULL, 
-    candidate_votes INT DEFAULT 0
+  candidate_id INT AUTO_INCREMENT PRIMARY KEY,
+  candidate_name VARCHAR(255) NOT NULL,
+  candidate_description TEXT,
+  candidate_image VARCHAR(255) NOT NULL, 
+  candidate_pdf VARCHAR(255) NOT NULL, 
+  candidate_votes INT DEFAULT 0
 );
 
 CREATE TABLE persons (
-    person_id INT AUTO_INCREMENT PRIMARY KEY,
-    person_dni VARCHAR(15) NOT NULL UNIQUE, 
-    person_name VARCHAR(255) NOT NULL,
-    person_email VARCHAR(255) NOT NULL UNIQUE,
-    person_password VARCHAR(255) NOT NULL,
-    has_voted TINYINT(1) DEFAULT 0, 
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  person_id INT AUTO_INCREMENT PRIMARY KEY,
+  person_dni VARCHAR(15) NOT NULL UNIQUE, 
+  person_name VARCHAR(255) NOT NULL,
+  person_email VARCHAR(255) NOT NULL UNIQUE,
+  person_password VARCHAR(255) NOT NULL,
+  has_voted TINYINT(1) DEFAULT 0, 
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE votes (
-    vote_id INT AUTO_INCREMENT PRIMARY KEY,
-    person_id INT NOT NULL,
-    candidate_id INT NOT NULL,
-    vote_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (person_id) REFERENCES persons(person_id),
-    FOREIGN KEY (candidate_id) REFERENCES candidates(candidate_id)
+  vote_id INT AUTO_INCREMENT PRIMARY KEY,
+  person_id INT NOT NULL,
+  candidate_id INT NOT NULL,
+  vote_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (person_id) REFERENCES persons(person_id),
+  FOREIGN KEY (candidate_id) REFERENCES candidates(candidate_id)
 );

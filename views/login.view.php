@@ -4,19 +4,19 @@
 <div class="container d-flex flex-column mt-3" style="">
   <div class="row">
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
-      <div class="card">
+      <div class="card mb-3">
         <div class="card-header">
           <h2 class="card-title m-0 fs-2">Login</h2>
         </div>
         <div class="card-body">
           <form method="POST">
             <div class="mb-3">
-              <label class="form-label">Usuario</label>
-              <input class="form-control" type="text" name="user_name" placeholder="Usuario" value="user" required />
+              <label class="form-label">DNI</label>
+              <input class="form-control" type="text" name="dni" placeholder="Usuario" value="76749024" required />
             </div>
             <div class="mb-3">
               <label class="form-label">Contraseña</label>
-              <input class="form-control" type="password" name="user_password" placeholder="Contraseña" value="user123"
+              <input class="form-control" type="password" name="password" placeholder="Contraseña" value="123456"
                 required />
               <small><a href="#">¿Olvidaste tu contraseña?</a></small>
             </div>

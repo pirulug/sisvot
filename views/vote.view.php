@@ -75,12 +75,11 @@
 <?php require __DIR__ . "/partials/top.partial.php"; ?>
 <?php require __DIR__ . "/partials/navbar.partial.php"; ?>
 
-
 <div class="container mt-3">
   <h1 class="text-center fw-bold">Votación Online</h1>
   <p class="text-center text-muted">Selecciona tu candidato preferido y presiona "Votar".</p>
 
-  <form action="submit_vote.php" method="POST" id="voteForm">
+  <form action="" method="POST" id="voteForm">
     <div class="ballot">
       <?php foreach ($candidates as $candidate): ?>
         <div class="candidate-row" data-id="<?= $candidate->candidate_id ?>">
@@ -103,8 +102,6 @@
     </div>
   </form>
 </div>
-
-
 
 <?php require __DIR__ . "/partials/footer.partial.php"; ?>
 <?php require __DIR__ . "/partials/bottom.partial.php"; ?>

@@ -13,10 +13,10 @@
       <table class="table table-hover table-bordered align-middle">
         <thead>
           <tr>
-            <th>Usuario</th>
+            <th>DNI</th>
+            <th>Nombre</th>
             <th>Email</th>
-            <th>Role</th>
-            <th>Estarus</th>
+            <th>Contraseña</th>
             <th>Accion</th>
           </tr>
         </thead>

@@ -37,7 +37,10 @@
 
           <!-- Votos -->
           <div class="card-footer text-center">
-            <span class="text-muted">Votos actuales: <?= htmlspecialchars($candidate->candidate_votes) ?></span>
+            <a href="<?= SITE_URL . "/uploads/" . $candidate->candidate_pdf ?>" class="btn btn-danger fw-bold" target="_blank">
+              <i class="fs-2 fa-solid fa-file-pdf"></i>
+              Descargar propuesta
+            </a>
           </div>
         </div>
       </div>

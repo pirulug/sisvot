@@ -30,6 +30,12 @@ function get_user_session_information($connect) {
   return ($sentence) ? $sentence : false;
 }
 
+function get_person_session_information($connect) {
+  $sentence = $connect->query("SELECT * FROM persons WHERE person_id = '" . $_SESSION['person_id'] . "' LIMIT 1");
+  $sentence = $sentence->fetch(PDO::FETCH_OBJ);
+  return ($sentence) ? $sentence : false;
+}
+
 /* --------------- */
 // Paginador
 /* --------------- */

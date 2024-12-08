@@ -4,8 +4,9 @@
 <div class="container">
   <div class="d-flex justify-content-center align-items-center">
     <div class="text-center">
-      <h1 class="display-1 fw-bold"><?= SITE_NAME ?></h1>
-      <p class="lead">Un sitio php para poder comenzar.</p>
+      <h1 class="display-1 fw-bold pt-5">Bienvenido al Sistema de Votación Online</h1>
+      <h2 class="h2">Inicia sesión o regístrate para votar.</h2>
+      <a class="btn btn-lg btn-primary me-1" href="login.php">Iniciar sesión</a>
     </div>
   </div>
 </div>

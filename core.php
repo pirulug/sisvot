@@ -24,8 +24,8 @@ if (!$connect) {
   exit();
 }
 
-if (isset($_SESSION["user_name"])) {
-  $user_session = get_user_session_information($connect);
+if (isset($_SESSION["person_id"])) {
+  $person_session = get_person_session_information($connect);
 }
 
 // Access Control
@@ -42,4 +42,4 @@ $querySelect = "SELECT * FROM brand";
 $brand       = $connect->query($querySelect)->fetch(PDO::FETCH_OBJ);
 
 // User log
-$log = new Log($connect, BASE_DIR."/log/actions.log");
+$log = new Log($connect, BASE_DIR . "/log/actions.log");
