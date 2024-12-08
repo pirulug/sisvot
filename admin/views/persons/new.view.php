@@ -10,19 +10,20 @@
         <label for="dni" class="form-label">DNI</label>
         <input type="text" class="form-control" id="dni" name="dni" pattern="[0-9]{8}"
           oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8);"
-          title="Debe ingresar exactamente 8 dígitos numéricos." required>
+          title="Debe ingresar exactamente 8 dígitos numéricos." value="<?= $_POST['dni'] ?? "" ?>" required>
       </div>
       <div class="mb-3">
         <label for="name" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="name" name="name" required>
+        <input type="text" class="form-control" id="name" name="name" value="<?= $_POST['name'] ?? "" ?>" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Correo Electrónico</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" class="form-control" id="email" name="email" value="<?= $_POST['email'] ?? "" ?>" required>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+        <input type="text" class="form-control" id="password" name="password" value="<?= $_POST['password'] ?? "" ?>"
+          required>
       </div>
       <button type="submit" class="btn btn-primary">Registrar</button>
     </form>

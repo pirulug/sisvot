@@ -19,7 +19,7 @@ if (!is_numeric($id)) {
   exit();
 }
 
-$query = "SELECT * FROM users WHERE user_id = $id";
+$query = "SELECT * FROM persons WHERE person_id = $id";
 $stmt  = $connect->prepare($query);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_OBJ);
@@ -31,7 +31,7 @@ if (empty($user)) {
   exit();
 }
 
-$statement = $connect->prepare('DELETE FROM users WHERE user_id = :id');
+$statement = $connect->prepare('DELETE FROM persons WHERE person_id = :id');
 $statement->execute(array('id' => $id));
 
 $messageHandler->addMessage("Usuario eliminado correctamente.", "success");

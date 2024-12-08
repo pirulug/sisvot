@@ -9,33 +9,18 @@ $page   = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $limit  = 10;
 $offset = ($page - 1) * $limit;
 
-$orderColumn    = 'user_id';
+$orderColumn    = 'person_id';
 $orderDirection = 'DESC';
 
-$currentUserId = $_SESSION['user_id'];
-
 // Condiciones adicionales dinámicas
-$searchColumns = ['user_name', 'user_email'];
+$searchColumns = ['person_name', 'person_email'];
 
-$additionalConditions = [
-  [
-    'sql'   => 'user_role != 1',
-    'param' => null,
-    'value' => null,
-    'type'  => null,
-  ],
-  [
-    'sql'   => 'user_id != :currentUserId',
-    'param' => ':currentUserId',
-    'value' => $currentUserId,
-    'type'  => PDO::PARAM_INT,
-  ]
-];
+$additionalConditions = [];
 
-$total_results = getTotalResults('users', $searchColumns, $search, $additionalConditions, $connect);
+$total_results = getTotalResults('persons', $searchColumns, $search, $additionalConditions, $connect);
 $total_pages   = ceil($total_results / $limit);
 
-$users = getPaginatedResults('users', $searchColumns, $search, $additionalConditions, $limit, $offset, $connect, $orderColumn, $orderDirection);
+$persons = getPaginatedResults('persons', $searchColumns, $search, $additionalConditions, $limit, $offset, $connect, $orderColumn, $orderDirection);
 
 
 /* ========== Theme config ========= */

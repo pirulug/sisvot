@@ -21,31 +21,26 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($users as $user): ?>
+          <?php foreach ($persons as $data): ?>
             <tr>
-              <td><?= $user->user_name ?></td>
-              <td><?= $user->user_email ?></td>
               <td>
-                <?php if ($user->user_role == 1): ?>
-                  <span class="badge bg-success">Administrador</span>
-                <?php else: ?>
-                  <span class="badge bg-info">Suscriptor</span>
-                <?php endif; ?>
+                <?= $data->person_dni ?>
               </td>
               <td>
-                <?php if ($user->user_status == 1): ?>
-                  <span class="badge bg-success">Activo</span>
-                <?php else: ?>
-                  <span class="badge bg-danger">Desactivo</span>
-                <?php endif; ?>
+                <?= $data->person_name ?>
               </td>
               <td>
-
-                <a href="edit.php?id=<?= $encryption->encrypt($user->user_id) ?>" class="btn btn-sm btn-success"
+                <?= $data->person_email ?>
+              </td>
+              <td>
+                <?= $data->person_password ?>
+              </td>
+              <td>
+                <a href="edit.php?id=<?= $encryption->encrypt($data->person_id) ?>" class="btn btn-sm btn-success"
                   data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar">
                   <i class="fa fa-pen"></i>
                 </a>
-                <a href="delete.php?id=<?= $encryption->encrypt($user->user_id) ?>" class="btn btn-sm btn-danger"
+                <a href="delete.php?id=<?= $encryption->encrypt($data->person_id) ?>" class="btn btn-sm btn-danger"
                   data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar"
                   onClick="return confirm('¿Quieres eliminar?')">
                   <i class="fa fa-trash"></i>

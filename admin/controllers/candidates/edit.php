@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 /* ========== Theme config ========= */
 $theme_title = "Editar candidato";
-$theme_path  = "candidates-edit";
+$theme_path  = "candidates-new";
 // $theme_scripts = ["js/clear.js"];
 // $theme_styles = ["pages/dashboard.css"];
 include BASE_DIR_ADMIN . "/views/candidates/edit.view.php";

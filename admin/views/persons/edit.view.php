@@ -1,57 +1,29 @@
 <?php require BASE_DIR_ADMIN . "/views/partials/top.partial.php"; ?>
 <?php require BASE_DIR_ADMIN . "/views/partials/navbar.partial.php"; ?>
 
-
-
 <div class="card mb-3">
   <div class="card-body">
     <form id="formNewUser" enctype="multipart/form-data" action="" method="post">
-
-    <input type="hidden" name="user_id" value="<?= $encryption->encrypt($user->user_id) ?>">
-
+      <input type="hidden" name="id" value="<?= $encryption->encrypt($person->person_id) ?>">
       <div class="mb-3">
-        <label>Name</label>
-        <input type="text" name="user_name" class="form-control" value="<?= $user->user_name ?>" required>
+        <label for="dni" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="dni" name="dni" pattern="[0-9]{8}"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8);"
+          title="Debe ingresar exactamente 8 dígitos numéricos." value="<?= $person->person_dni ?>" require>
       </div>
-
       <div class="mb-3">
-        <label>Email</label>
-        <input type="text" name="user_email" class="form-control" value="<?= $user->user_email ?>" required>
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" value="<?= $person->person_name ?>" required>
       </div>
-
       <div class="mb-3">
-        <label>Password</label>
-        <input class="form-control" type="text" name="user_password" value="<?= $encryption->decrypt($user->user_password) ?>">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" value="<?= $person->person_email ?>" required>
       </div>
-
       <div class="mb-3">
-        <label class="control-label">Role</label>
-        <select class="form-select" name="user_role" required>
-          <option value="0">- Seleccionar -</option>
-          <option value="1" <?= $user->user_role == 1 ? 'selected' : '' ?>>
-            Administrador
-          </option>
-          <option value="2" <?= $user->user_role == 2 ? 'selected' : '' ?>>
-            Suscriptor
-          </option>
-        </select>
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="text" class="form-control" id="password" name="password" value="<?= $person->person_password ?>" required>
       </div>
-
-      <div class="mb-3">
-        <label class="control-label">Status</label>
-        <select class="form-select" name="user_status" required>
-          <option value="0">- Seleccionar -</option>
-          <option value="1" <?= $user->user_status == 1 ? 'selected' : '' ?>>
-            Activo
-          </option>
-          <option value="2" <?= $user->user_status == 2 ? 'selected' : '' ?>>
-            Inactivo
-          </option>
-        </select>
-      </div>
-
-      <hr>
-      <button class="btn btn-primary" type="submit" name="save">Guardar</button>
+      <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
   </div>
 </div>
