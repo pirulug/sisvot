@@ -20,6 +20,7 @@ $requiredExtensions = [
   'pdo',
   'pdo_mysql',
   'mbstring',
+  'zip',
 ]; // Añadir más según sea necesario
 
 $phpVersionOk = checkPHPVersion($requiredPHPVersion);

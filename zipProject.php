@@ -52,12 +52,13 @@ function zipProject($source, $destination, $ignored = []) {
 
 // Ruta al directorio que deseas comprimir
 $sourceDir = __DIR__; // Ruta a la raíz de tu proyecto
-$zipFile   = __DIR__ . '/_up/project.zip'; // Ruta donde se creará el archivo ZIP
+$zipFile   = __DIR__ . '/_up/sisvot.zip'; // Ruta donde se creará el archivo ZIP
 
 // Archivos y carpetas a excluir
 $ignoredFiles = [
   '.git',
   '_up',
+  'config.php',
   'psg.php',
   '.gitignore',
   'readme.md',

@@ -16,8 +16,8 @@
               <input class="form-control" type="file" name="st_favicon">
             </td>
             <td class="w-50">
-              <img src="<?= $brand->st_favicon ?? "https://dummyimage.com/128x128/000/fff.jpg" ?>" alt="favicon"
-                height="128">
+              <img src="<?= SITE_URL . $brand->st_favicon ?? "https://dummyimage.com/128x128/000/fff.jpg" ?>"
+                alt="favicon" height="128">
             </td>
           </tr>
           <tr>
@@ -28,8 +28,8 @@
               <input class="form-control" type="file" name="st_whitelogo">
             </td>
             <td class="w-50 bg-dark">
-              <img src="<?= $brand->st_whitelogo ?? "https://dummyimage.com/320x71/000/fff.jpg" ?>" alt="whitelogo"
-                height="71">
+              <img src="<?= SITE_URL . $brand->st_whitelogo ?? "https://dummyimage.com/320x71/000/fff.jpg" ?>"
+                alt="whitelogo" height="71">
             </td>
           </tr>
           <tr>
@@ -40,8 +40,8 @@
               <input class="form-control" type="file" name="st_darklogo">
             </td>
             <td class="w-50 bg-white">
-              <img src="<?= $brand->st_darklogo ?? "https://dummyimage.com/320x71/fff/000.jpg" ?>" alt="darklogo"
-                height="71">
+              <img src="<?= SITE_URL . $brand->st_darklogo ?? "https://dummyimage.com/320x71/fff/000.jpg" ?>"
+                alt="darklogo" height="71">
             </td>
           </tr>
         </tbody>
